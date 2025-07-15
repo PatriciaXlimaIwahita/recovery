@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise Interativa | Propostas para Grupo Recovery</title>
+    <title>Análise Interativa | Propostas e SEO para Recovery</title>
     
-    <!-- Chosen Palette: Professional Calm -->
-    <!-- Application Structure Plan: A single-page application with vertical scrolling and a sticky top navigation bar for seamless section jumping. The core content (proposals) is organized into thematic sections (UX, CTAs, Clarity) and presented as interactive accordions. This structure allows for progressive disclosure, preventing cognitive overload and letting the user/interviewer explore details on demand. A summary bar chart visualizes the expected impact, providing a powerful quantitative summary. This was chosen to transform a static report into an engaging, explorable presentation that showcases strategic thinking. -->
-    <!-- Visualization & Content Choices: Report Info: Strengths -> Goal: Inform -> Viz: Icon cards -> Justification: Quick, visual summary. | Report Info: Proposals (Identified Improvement, Suggested Action, Expected Result) -> Goal: Organize/Inform -> Viz: Interactive accordions -> Justification: Allows progressive disclosure, making dense information digestible and interactive. | Report Info: All "Expected Results" (quantitative gains) -> Goal: Compare/Summarize Impact -> Viz: Bar Chart (Chart.js) -> Justification: Aggregates all expected positive outcomes into a single, powerful visual that clearly communicates the value of the proposals. -> Library: Chart.js for its simplicity and responsiveness on Canvas. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +24,7 @@
             padding: 0 1.5rem;
         }
         .accordion-item.active .accordion-content {
-            max-height: 500px;
+            max-height: 500px; /* Increased to accommodate more content if needed */
             padding: 1.5rem 1.5rem;
         }
         .accordion-item.active .accordion-icon {
@@ -65,6 +60,7 @@
                 <div class="text-xl font-bold text-gray-800">Análise de Conversão</div>
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#proposals" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Propostas</a>
+                    <a href="#keyword-analysis" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Análise de SEO</a>
                     <a href="#impact" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Impacto</a>
                     <a href="#conclusion" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Conclusão</a>
                 </div>
@@ -76,6 +72,7 @@
             </div>
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
                 <a href="#proposals" class="block text-gray-600 hover:text-blue-600">Propostas</a>
+                <a href="#keyword-analysis" class="block text-gray-600 hover:text-blue-600">Análise de SEO</a>
                 <a href="#impact" class="block text-gray-600 hover:text-blue-600">Impacto</a>
                 <a href="#conclusion" class="block text-gray-600 hover:text-blue-600">Conclusão</a>
             </div>
@@ -240,6 +237,90 @@
             </div>
         </section>
 
+        <section id="keyword-analysis" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Análise de Palavras-Chave de Busca (SEO)</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Compreender a intenção do usuário nas buscas é crucial para atrair tráfego qualificado e otimizar a conversão.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200/50">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Termos Utilizados pelos Usuários no Brasil</h3>
+                    <p class="text-gray-700 mb-4">As pesquisas indicam que os usuários buscam por termos que refletem a necessidade de **resolver a dívida**, encontrar **plataformas específicas**, entender **condições e benefícios**, buscar por **tipos de dívidas** e **orientações**.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">📍 Resolver a Dívida:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Como quitar dívidas"</li>
+                                <li>"Como sair das dívidas"</li>
+                                <li>"Negociar dívidas"</li>
+                                <li>"Acordo de dívida"</li>
+                                <li>"Liquidar dívidas"</li>
+                                <li>"Limpar nome"</li>
+                                <li>"Nome sujo"</li>
+                                <li>"Sair do vermelho"</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">⭐ Plataformas e Programas Específicos:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Serasa Limpa Nome"</li>
+                                <li>"Desenrola Brasil"</li>
+                                <li>"Feirão Serasa"</li>
+                                <li>"Refis" (para dívidas com o governo)</li>
+                                <li>"Acordo Paulista" (para dívidas estaduais em SP)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">💰 Condições e Benefícios:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Dívidas com desconto"</li>
+                                <li>"Pagar dívida parcelado"</li>
+                                <li>"Juros baixos para dívidas"</li>
+                                <li>"Renegociação com desconto"</li>
+                                <li>"Quitar dívida à vista"</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">🎯 Tipos de Dívidas e Orientações:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Dívida de banco"</li>
+                                <li>"Dívida de cartão de crédito"</li>
+                                <li>"Dívida de financiamento"</li>
+                                <li>"Dívida de luz" / "Dívida de água"</li>
+                                <li>"Dívida com o governo" / "Dívida ativa"</li>
+                                <li>"Passo a passo para quitar dívidas"</li>
+                                <li>"Dicas para negociar dívidas"</li>
+                                <li>"Organizar finanças para pagar dívidas"</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold text-gray-800 mt-10 mb-4">Implicações para o Grupo Recovery:</h3>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-6 rounded-lg border border-blue-200/50">
+                            <h4 class="font-bold text-lg text-blue-800 mb-2">Foco na Solução do Problema do Usuário:</h4>
+                            <p class="text-blue-700">As pessoas buscam ativamente por "quitar" e "limpar o nome". O Grupo Recovery já utiliza termos eficazes como "Consulte seu CPF grátis" e "até 99% de desconto", que se alinham perfeitamente com essa intenção de busca. É fundamental continuar reforçando essa linguagem focada na resolução do problema.</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg border border-green-200/50">
+                            <h4 class="font-bold text-lg text-green-800 mb-2">Relevância de Plataformas Conhecidas:</h4>
+                            <p class="text-green-700">A popularidade de termos como "Serasa Limpa Nome" e "Desenrola Brasil" indica que essas são as referências para o público. O Grupo Recovery pode se beneficiar ao contextualizar sua oferta em relação a esses programas, explicando como se diferencia ou complementa, ou garantindo que usuários que vêm dessas plataformas encontrem uma jornada fluida.</p>
+                        </div>
+                        <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200/50">
+                            <h4 class="font-bold text-lg text-yellow-800 mb-2">Benefícios Claros e Diretos:</h4>
+                            <p class="text-yellow-700">Descontos e parcelamento são os principais motivadores. A comunicação desses benefícios deve ser sempre proeminente, clara e visível em todas as etapas da jornada do usuário no site, desde o primeiro contato até a finalização do acordo.</p>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg border border-purple-200/50">
+                            <h4 class="font-bold text-lg text-purple-800 mb-2">Conteúdo de Educação Financeira:</h4>
+                            <p class="text-purple-700">Há uma busca implícita por "como fazer" e "organizar". A criação de conteúdo educacional (blog posts, guias) que ajude o usuário a entender o processo de negociação e a organizar suas finanças pode atrair tráfego orgânico qualificado e posicionar o Grupo Recovery como um parceiro na jornada de recuperação financeira, não apenas um cobrador.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mt-8">Ao otimizar o conteúdo do site e as campanhas de marketing com essas palavras-chave, o Grupo Recovery pode melhorar significativamente sua visibilidade em buscas orgânicas e pagas, atraindo usuários que já estão em um estágio avançado de intenção de liquidar suas dívidas.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="impact" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -258,7 +339,7 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold">Conclusão Estratégica</h2>
                 <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-                    A implementação sinérgica dessas melhorias focadas em UX, CTAs e Clareza tem o potencial de impactar significativamente a taxa de conversão do Grupo Recovery. Ao tornar o processo mais intuitivo, confiável e transparente, criamos um ambiente que não apenas aumenta o número de acordos fechados, mas também fortalece a satisfação e a lealdade do cliente.
+                    A implementação sinérgica dessas melhorias focadas em UX, CTAs, Clareza e estratégias de SEO tem o potencial de impactar significativamente a taxa de conversão de pagamentos de dívidas no site do Grupo Recovery. Ao tornar o processo mais intuitivo, transparente e confiável, e ao capturar a intenção de busca do usuário, a empresa pode não apenas aumentar o número de acordos fechados, mas também fortalecer a satisfação geral do cliente e sua posição no mercado.
                 </p>
             </div>
         </section>
@@ -296,21 +377,23 @@
             const impactChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Consultas de CPF', 'Acordos Iniciados', 'Finalização de Acordos', 'Engajamento do Usuário'],
+                    labels: ['Consultas de CPF', 'Acordos Iniciados', 'Finalização de Acordos', 'Engajamento do Usuário', 'Tráfego Orgânico Qualificado'],
                     datasets: [{
                         label: 'Crescimento Potencial (%)',
-                        data: [30, 25, 20, 40],
+                        data: [30, 25, 20, 40, 35], /* Added a new data point for Organic Traffic */
                         backgroundColor: [
                             'rgba(59, 130, 246, 0.7)',
                             'rgba(34, 197, 94, 0.7)',
                             'rgba(234, 179, 8, 0.7)',
-                            'rgba(139, 92, 246, 0.7)'
+                            'rgba(139, 92, 246, 0.7)',
+                            'rgba(249, 115, 22, 0.7)' /* New color for the new data point */
                         ],
                         borderColor: [
                             'rgba(59, 130, 246, 1)',
                             'rgba(34, 197, 94, 1)',
                             'rgba(234, 179, 8, 1)',
-                            'rgba(139, 92, 246, 1)'
+                            'rgba(139, 92, 246, 1)',
+                            'rgba(249, 115, 22, 1)'
                         ],
                         borderWidth: 1
                     }]
