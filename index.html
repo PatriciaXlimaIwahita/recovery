@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise Interativa | Propostas e SEO para Recovery</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            padding: 0 1.5rem;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px; /* Increased to accommodate more content if needed */
+            padding: 1.5rem 1.5rem;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-gray-800">Análise de Conversão</div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#proposals" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Propostas</a>
+                    <a href="#keyword-analysis" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Análise de SEO</a>
+                    <a href="#impact" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Impacto</a>
+                    <a href="#conclusion" class="nav-link text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 pb-1">Conclusão</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#proposals" class="block text-gray-600 hover:text-blue-600">Propostas</a>
+                <a href="#keyword-analysis" class="block text-gray-600 hover:text-blue-600">Análise de SEO</a>
+                <a href="#impact" class="block text-gray-600 hover:text-blue-600">Impacto</a>
+                <a href="#conclusion" class="block text-gray-600 hover:text-blue-600">Conclusão</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-white py-20 sm:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                    Otimizando a Conversão para o <span class="text-blue-600">Grupo Recovery</span>
+                </h1>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+                    Uma análise estratégica com propostas de melhoria focadas em Experiência do Usuário, CTAs e Clareza de Informação para impulsionar a quitação de dívidas.
+                </p>
+            </div>
+        </section>
+
+        <section id="strengths" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Fundamentos Sólidos Atuais</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">O site já possui uma base excelente. Nossas propostas visam potencializar o que já funciona bem.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200/50">
+                        <h3 class="font-bold text-lg text-gray-800">📊 Design Limpo e Profissional</h3>
+                        <p class="text-gray-600 mt-2">A interface é intuitiva e facilita a navegação inicial do usuário.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200/50">
+                        <h3 class="font-bold text-lg text-gray-800">📱 Acessibilidade e Foco Mobile</h3>
+                        <p class="text-gray-600 mt-2">Oferece múltiplos canais de contato e demonstra preocupação com a experiência móvel.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200/50">
+                        <h3 class="font-bold text-lg text-gray-800">💎 Transparência e Credibilidade</h3>
+                        <p class="text-gray-600 mt-2">Informações claras sobre descontos e a associação com o Itaú geram confiança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proposals" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Plano de Ação Interativo</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Explore as propostas de melhoria. Clique em cada item para ver a ação sugerida e o resultado esperado.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">Experiência do Usuário (UX)</h3>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Navegação Intuitiva e CTA Principal
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Manter o botão "Consulte grátis" em destaque, com possíveis animações sutis.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Aumento imediato nas consultas de CPF/CNPJ, reduzindo o abandono inicial.
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Múltiplos Canais de Contato
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Promover todos os canais com ícones clicáveis ou uma barra de acesso rápido.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Maior engajamento e mais oportunidades de conversão ao atender as preferências do usuário.
+                            </div>
+                        </div>
+                         <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Construção de Confiança
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Destacar mais os selos de segurança e ter uma seção de depoimentos mais interativa.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Aumento da adesão aos acordos pela maior credibilidade transmitida.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">CTAs Eficazes</h3>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Otimização de CTAs Principais
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Realizar testes A/B com cores, tamanhos e textos para otimizar a taxa de cliques (CTR).
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Mais cliques nas CTAs, impulsionando mais usuários para a negociação e gerando mais leads qualificados.
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Linguagem Persuasiva
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Testar variações de frases que destaquem benefícios ("saia do vermelho") e gerem senso de urgência.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Mais motivação para o usuário agir, entendendo claramente o valor de resolver sua dívida.
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Posicionamento Estratégico
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Usar mapas de calor para identificar pontos de maior atenção e posicionar as CTAs nesses locais.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Nenhuma oportunidade de conversão perdida, aumentando o número geral de acordos iniciados.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-center text-gray-800 mb-4">Clareza da Informação</h3>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Simulador de Acordo
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Apresentar uma calculadora de parcelamento ou simulador interativo no site.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Maior atração e engajamento, pois o usuário visualiza os benefícios financeiros antes de se comprometer.
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                Guia Visual da Negociação
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Incluir vídeos animados ou infográficos que ilustrem o processo passo a passo.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Diminuição de dúvidas e ansiedade, aumentando a taxa de finalização de acordos.
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-gray-50 rounded-lg border border-gray-200/80 shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-gray-700">
+                                FAQ Inteligente
+                                <span class="accordion-icon text-blue-500 text-2xl font-light">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <strong class="text-blue-600">Ação Sugerida:</strong> Ampliar a FAQ com base em dúvidas reais e adicionar uma função de busca.
+                                <br><br>
+                                <strong class="text-green-600">Resultado Esperado:</strong> Redução da carga do atendimento e aumento da autonomia do usuário, acelerando a conversão.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="keyword-analysis" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Análise de Palavras-Chave de Busca (SEO)</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Compreender a intenção do usuário nas buscas é crucial para atrair tráfego qualificado e otimizar a conversão.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200/50">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Termos Utilizados pelos Usuários no Brasil</h3>
+                    <p class="text-gray-700 mb-4">As pesquisas indicam que os usuários buscam por termos que refletem a necessidade de **resolver a dívida**, encontrar **plataformas específicas**, entender **condições e benefícios**, buscar por **tipos de dívidas** e **orientações**.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">📍 Resolver a Dívida:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Como quitar dívidas"</li>
+                                <li>"Como sair das dívidas"</li>
+                                <li>"Negociar dívidas"</li>
+                                <li>"Acordo de dívida"</li>
+                                <li>"Liquidar dívidas"</li>
+                                <li>"Limpar nome"</li>
+                                <li>"Nome sujo"</li>
+                                <li>"Sair do vermelho"</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">⭐ Plataformas e Programas Específicos:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Serasa Limpa Nome"</li>
+                                <li>"Desenrola Brasil"</li>
+                                <li>"Feirão Serasa"</li>
+                                <li>"Refis" (para dívidas com o governo)</li>
+                                <li>"Acordo Paulista" (para dívidas estaduais em SP)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">💰 Condições e Benefícios:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Dívidas com desconto"</li>
+                                <li>"Pagar dívida parcelado"</li>
+                                <li>"Juros baixos para dívidas"</li>
+                                <li>"Renegociação com desconto"</li>
+                                <li>"Quitar dívida à vista"</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-700 mb-3">🎯 Tipos de Dívidas e Orientações:</h4>
+                            <ul class="list-disc pl-5 text-gray-600 space-y-1">
+                                <li>"Dívida de banco"</li>
+                                <li>"Dívida de cartão de crédito"</li>
+                                <li>"Dívida de financiamento"</li>
+                                <li>"Dívida de luz" / "Dívida de água"</li>
+                                <li>"Dívida com o governo" / "Dívida ativa"</li>
+                                <li>"Passo a passo para quitar dívidas"</li>
+                                <li>"Dicas para negociar dívidas"</li>
+                                <li>"Organizar finanças para pagar dívidas"</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-semibold text-gray-800 mt-10 mb-4">Implicações para o Grupo Recovery:</h3>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-6 rounded-lg border border-blue-200/50">
+                            <h4 class="font-bold text-lg text-blue-800 mb-2">Foco na Solução do Problema do Usuário:</h4>
+                            <p class="text-blue-700">As pessoas buscam ativamente por "quitar" e "limpar o nome". O Grupo Recovery já utiliza termos eficazes como "Consulte seu CPF grátis" e "até 99% de desconto", que se alinham perfeitamente com essa intenção de busca. É fundamental continuar reforçando essa linguagem focada na resolução do problema.</p>
+                        </div>
+                        <div class="bg-green-50 p-6 rounded-lg border border-green-200/50">
+                            <h4 class="font-bold text-lg text-green-800 mb-2">Relevância de Plataformas Conhecidas:</h4>
+                            <p class="text-green-700">A popularidade de termos como "Serasa Limpa Nome" e "Desenrola Brasil" indica que essas são as referências para o público. O Grupo Recovery pode se beneficiar ao contextualizar sua oferta em relação a esses programas, explicando como se diferencia ou complementa, ou garantindo que usuários que vêm dessas plataformas encontrem uma jornada fluida.</p>
+                        </div>
+                        <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200/50">
+                            <h4 class="font-bold text-lg text-yellow-800 mb-2">Benefícios Claros e Diretos:</h4>
+                            <p class="text-yellow-700">Descontos e parcelamento são os principais motivadores. A comunicação desses benefícios deve ser sempre proeminente, clara e visível em todas as etapas da jornada do usuário no site, desde o primeiro contato até a finalização do acordo.</p>
+                        </div>
+                        <div class="bg-purple-50 p-6 rounded-lg border border-purple-200/50">
+                            <h4 class="font-bold text-lg text-purple-800 mb-2">Conteúdo de Educação Financeira:</h4>
+                            <p class="text-purple-700">Há uma busca implícita por "como fazer" e "organizar". A criação de conteúdo educacional (blog posts, guias) que ajude o usuário a entender o processo de negociação e a organizar suas finanças pode atrair tráfego orgânico qualificado e posicionar o Grupo Recovery como um parceiro na jornada de recuperação financeira, não apenas um cobrador.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mt-8">Ao otimizar o conteúdo do site e as campanhas de marketing com essas palavras-chave, o Grupo Recovery pode melhorar significativamente sua visibilidade em buscas orgânicas e pagas, atraindo usuários que já estão em um estágio avançado de intenção de liquidar suas dívidas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Visualização de Impacto Esperado</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Este gráfico projeta o potencial de crescimento em métricas chave após a implementação das melhorias propostas.</p>
+                </div>
+                <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg">
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="py-20 bg-gray-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold">Conclusão Estratégica</h2>
+                <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+                    A implementação sinérgica dessas melhorias focadas em UX, CTAs, Clareza e estratégias de SEO tem o potencial de impactar significativamente a taxa de conversão de pagamentos de dívidas no site do Grupo Recovery. Ao tornar o processo mais intuitivo, transparente e confiável, e ao capturar a intenção de busca do usuário, a empresa pode não apenas aumentar o número de acordos fechados, mas também fortalecer a satisfação geral do cliente e sua posição no mercado.
+                </p>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-white py-6">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>Análise Interativa preparada para entrevista. &copy; 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.accordion-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    item.classList.toggle('active');
+                });
+            });
+
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            const impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Consultas de CPF', 'Acordos Iniciados', 'Finalização de Acordos', 'Engajamento do Usuário', 'Tráfego Orgânico Qualificado'],
+                    datasets: [{
+                        label: 'Crescimento Potencial (%)',
+                        data: [30, 25, 20, 40, 35], /* Added a new data point for Organic Traffic */
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(34, 197, 94, 0.7)',
+                            'rgba(234, 179, 8, 0.7)',
+                            'rgba(139, 92, 246, 0.7)',
+                            'rgba(249, 115, 22, 0.7)' /* New color for the new data point */
+                        ],
+                        borderColor: [
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(34, 197, 94, 1)',
+                            'rgba(234, 179, 8, 1)',
+                            'rgba(139, 92, 246, 1)',
+                            'rgba(249, 115, 22, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(200, 200, 200, 0.2)'
+                            }
+                        },
+                        x: {
+                             grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
